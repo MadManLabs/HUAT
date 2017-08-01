@@ -11,7 +11,7 @@ Catch
     Exit 1
 }
 
-<#
+<#cd 
 DECLARE GLOBAL VARIABLES
 #>
 
@@ -31,7 +31,7 @@ for($i=0;$i-le $arr.length-1;$i++){"`$arr[{0}] = {1}" -f $i,$arr[$i]}
 function Show-Menu
 {
      param (
-           [string]$Title = 'HUAT Main Menu'
+           [string]$Title = 'HUAT Main Menu v3.0'
      )
      cls
 	 Write-Host ""
