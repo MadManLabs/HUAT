@@ -1,1 +1,1 @@
-﻿
+﻿. C:\UserData\Documents\GitHub\HUAT\script-tools\show_connected_drives.ps1
