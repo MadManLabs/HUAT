@@ -1,4 +1,8 @@
-﻿$global:IsUserIDCorrect = $NULL
+﻿<#
+This script is fun from UMT_USB_Backup.ps1
+#>
+
+$global:IsUserIDCorrect = $NULL
 $global:BackupUserID = $NULL
 
 function global:UserIDCorrect{
@@ -19,3 +23,8 @@ function global:UserIDCorrect{
         $global:BackupUserID = Write-Host "Enter UserID to backup"
     }
 }
+
+<#
+$BackupUserID now becomes the UserID that we need to grab files from, and then create the $env:UserName folder
+in the target 'cos that means the user may have changed their name!
+#>
