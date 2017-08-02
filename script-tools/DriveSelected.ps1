@@ -6,4 +6,4 @@ function global:WhichDrive2BackupTo{
     $global:DriveSelected = Read-Host "your data to:"
     Write-Host ""
     Write-Host "Drive selected is" $global:DriveSelected
-    }
+}
