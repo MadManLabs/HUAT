@@ -5,6 +5,8 @@
 # 			Directory.
 # Versions	:	2017.05.15 - Created.
 
+# Usage: Add_ComputerToGroup <ComputerName> <GroupName>
+
 Param(
     [Parameter(Mandatory=$True)][string]$Computer,
     [Parameter(Mandatory=$True)][String]$Group
