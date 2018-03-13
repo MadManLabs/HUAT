@@ -1,0 +1,11 @@
+$Error is a bult-in
+
+$Error.Count is total number of errors
+
+IF ($Error.Count -gt 0)
+{
+<#
+print each line of error count
+log to file
+#>
+}
