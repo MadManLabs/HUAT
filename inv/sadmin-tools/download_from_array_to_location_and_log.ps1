@@ -3,7 +3,7 @@
 # WEBSITE : invocare.com.au
 # CREATED : 2018-03-16 
 # UPDATED : 2018-03-17
-# VERSION : 1.4
+# VERSION : 1.5
 # COMMENT : Download list of files as specified in array
 ###########################################################
 
@@ -80,3 +80,21 @@ For ($eachCAB in $expandCABArray)
     Expand $DLPath$eachCAB -F:* $DLPath
     Write-Host "$eachCAB has been expanded"
 }
+
+# Script completion notification
+Write-Host "Script is now complete!" -BackgroundColor DarkBlue -ForegroundColor Yellow
+
+<#
+
+H Drive on server = H:\Source\OSD\DriverPackages
+
+Server Path = \\wsprdapp01\source$
+
+
+NOTE: Only need to set the $DLPath variable
+
+\OSD\DriverPackages
+
+ExpandPath = \OSD\DriverPackages\DELL\
+
+#>
