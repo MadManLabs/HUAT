@@ -1,0 +1,3 @@
+Get-ADComputer -Filter {SamAccountName -like "*osx*"} | Foreach-Object { Remove-ADGroupMember "Software_Cylance" -Members $_.DistinguishedName -Confirm:$False }
+
+Get-ADComputer -Filter {SamAccountName -like "PC*"} | Foreach-Object { Add-ADPrincipalGroupMembership -Identity $_.SamAccountName -MemberOf "Software_Cylance" }
