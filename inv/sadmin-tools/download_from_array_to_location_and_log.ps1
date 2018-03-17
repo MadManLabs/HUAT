@@ -3,7 +3,7 @@
 # WEBSITE : invocare.com.au
 # CREATED : 2018-03-16 
 # UPDATED : 2018-03-17
-# VERSION : 1.6
+# VERSION : 1.8
 # COMMENT : Download list of files as specified in array,
 #           then expand CAB files to specified directory.
 ###########################################################
@@ -45,7 +45,7 @@ $startTime = Get-Date
 
 $endTime = Get-Date
 
-$timeDifference = "Hours:$(($endTime).Subract($startTime).Hours) Mins:$(($endTime).Subract($startTime).Minutes) Seconds:$(($endTime).Subract($startTime).Seconds)"
+$timeDifference = "Hours:$(($endTime).Subtract($startTime).Hours) Mins:$(($endTime).Subtract($startTime).Minutes) Seconds:$(($endTime).Subtract($startTime).Seconds)"
 
 $downloadArray | ForEach-Object -Process {
 
@@ -78,7 +78,7 @@ $CABFileList | ForEach-Object -Process {
 
 For ($eachCAB in $expandCABArray)
 {
-    Expand $DLPath$eachCAB -F:* $DLPath
+    Expand "$DLPath$eachCAB" -F:* $DLPath
     Write-Host "$eachCAB has been expanded"
 }
 
