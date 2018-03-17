@@ -3,7 +3,7 @@
 # WEBSITE : invocare.com.au
 # CREATED : 2018-03-16 
 # UPDATED : 2018-03-17
-# VERSION : 1.3
+# VERSION : 1.5
 # COMMENT : Download list of files as specified in array
 ###########################################################
 
@@ -40,23 +40,61 @@ $logFileName = "DownloadArrayLogFile.txt"
 # Set $logFile
 $logFile = $DLPath+$logFileName
 
+$startTime = Get-Date
 
+$endTime = Get-Date
+
+$timeDifference = "Hours:$(($endTime).Subract($startTime).Hours) Mins:$(($endTime).Subract($startTime).Minutes) Seconds:$(($endTime).Subract($startTime).Seconds)"
 
 $downloadArray | ForEach-Object -Process {
 
     # Set start time of iteration
-    $start_time = Get-Date
+    $startTime
 
     # Download file with WebRequest
-    Invoke-WebRequest -Uri "$_" -OutFile "$DLPath$(split-path -path $_ -leaf)"
+    Invoke-WebRequest -Uri "$_" -OutFile "$DLPath$(split-path -path -leaf)"
+
+    # End time of iteration
+    $endTime
     
     # Write file download completion message
-    Write-Host "$(Split-Path -Path $url -Leaf) downloaded in $((Get-Date).Subtract($start_time).Seconds) second(s)"
+    Write-Host "$(Split-Path -Path $_ -Leaf) downloaded in $timeDifference"
 
     # Append $logFile with completion message
-    "Time taken: $((Get-Date).Subtract($start_time).Seconds) second(s)" | Out-File -Encoding ascii -Append $logFile
+    "$(Split-Path -Path $_ -Leaf) downloaded in $timeDifference" | Out-File -Encoding ascii -Append $logFile
+}
+
+# Extract CAB downloads
+$CABFileList = $(dir $DLPath).Name
+
+$expandCABArray = @()
+
+$CABFileList | ForEach-Object -Process {
+
+    # Add list of CAB files to $expandCABArray
+    $expandCABArray += $_
+}
+
+For ($eachCAB in $expandCABArray)
+{
+    Expand $DLPath$eachCAB -F:* $DLPath
+    Write-Host "$eachCAB has been expanded"
 }
 
 # Script completion notification
-Write-Host 'Script is now complete!'
+Write-Host "Script is now complete!" -BackgroundColor DarkBlue -ForegroundColor Yellow
 
+<#
+
+H Drive on server = H:\Source\OSD\DriverPackages
+
+Server Path = \\wsprdapp01\source$
+
+
+NOTE: Only need to set the $DLPath variable
+
+\OSD\DriverPackages
+
+ExpandPath = \OSD\DriverPackages\DELL\
+
+#>
