@@ -1,9 +1,9 @@
-﻿###########################################################
+###########################################################
 # AUTHOR  : Danijel James
 # WEBSITE : invocare.com.au
 # CREATED : 2018-03-16 
 # UPDATED : 2018-03-17
-# VERSION : 1.8
+# VERSION : 1.9
 # COMMENT : Download list of files as specified in array,
 #           then expand CAB files to specified directory.
 ###########################################################
@@ -33,18 +33,16 @@ $downloadArray = @(
 
 
 # Define download directory
-$DLPath = "C:\Users\jamesd\Desktop\DELL\"
+$DLPath = "Z:\OSD\DriverPackages\"
 
 # Define logfile name
 $logFileName = "DownloadArrayLogFile.txt"
 
 # Set $logFile
-$logFile = $DLPath+$logFileName
+$logFile = "$DLPath$logFileName"
 
 $startTime = Get-Date
-
 $endTime = Get-Date
-
 $timeDifference = "Hours:$(($endTime).Subtract($startTime).Hours) Mins:$(($endTime).Subtract($startTime).Minutes) Seconds:$(($endTime).Subtract($startTime).Seconds)"
 
 $downloadArray | ForEach-Object -Process {
@@ -53,7 +51,7 @@ $downloadArray | ForEach-Object -Process {
     $startTime
 
     # Download file with WebRequest
-    Invoke-WebRequest -Uri "$_" -OutFile "$DLPath$(split-path -path -leaf)"
+    Invoke-WebRequest -Uri "$_" -OutFile "$DLPath$(Split-Path -Path $_ -Leaf)"
 
     # End time of iteration
     $endTime
@@ -66,7 +64,7 @@ $downloadArray | ForEach-Object -Process {
 }
 
 # Extract CAB downloads
-$CABFileList = $(dir $DLPath).Name
+$CABFileList = $(dir "$DLPath*.CAB").Name
 
 $expandCABArray = @()
 
@@ -76,7 +74,7 @@ $CABFileList | ForEach-Object -Process {
     $expandCABArray += $_
 }
 
-For ($eachCAB in $expandCABArray)
+ForEach ($eachCAB in $expandCABArray)
 {
     Expand "$DLPath$eachCAB" -F:* $DLPath
     Write-Host "$eachCAB has been expanded"
@@ -85,17 +83,3 @@ For ($eachCAB in $expandCABArray)
 # Script completion notification
 Write-Host "Script is now complete!" -BackgroundColor DarkBlue -ForegroundColor Yellow
 
-<#
-
-H Drive on server = H:\Source\OSD\DriverPackages
-
-Server Path = \\wsprdapp01\source$
-
-
-NOTE: Only need to set the $DLPath variable
-
-\OSD\DriverPackages
-
-ExpandPath = \OSD\DriverPackages\DELL\
-
-#>
