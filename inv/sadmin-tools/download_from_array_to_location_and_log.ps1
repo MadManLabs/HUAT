@@ -3,8 +3,9 @@
 # WEBSITE : invocare.com.au
 # CREATED : 2018-03-16 
 # UPDATED : 2018-03-17
-# VERSION : 1.5
-# COMMENT : Download list of files as specified in array
+# VERSION : 1.6
+# COMMENT : Download list of files as specified in array,
+#           then expand CAB files to specified directory.
 ###########################################################
 
 # Define array of files to download
