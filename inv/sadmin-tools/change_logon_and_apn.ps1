@@ -1,0 +1,1 @@
+﻿"sofia.nordlund","mark.dybell","john.sullivan","allan.delfin","jacinta.gale","fiona.wong","nathan.pringle","alex.clatworthy","faron.drayton","krishna.mysore" |  ForEach-Object { Get-ADUser -Filter "samaccountname -like '*$_*'"} | Select-Object name,proxyaddresses
