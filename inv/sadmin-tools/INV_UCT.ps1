@@ -1,4 +1,4 @@
-﻿#========================================================================
+﻿\#========================================================================
 # Date: 10/2/2011 8:34 PM
 # Author: Rich Prescott
 # Blog: blog.richprescott.com
@@ -12,7 +12,7 @@
 function OnApplicationLoad {
 $CreateXML = @"
 <?xml version="1.0" standalone="no"?>
-<OPTIONS Product="Arposh New User Creation" Version="1.2">
+<OPTIONS Product="Project Alyssa-Edwards" Version="1.2">
  <Settings>
   <sAMAccountName Generate="True">
    <Style Format="FirstName.LastName" Enabled="True" />
@@ -32,35 +32,29 @@ $CreateXML = @"
   <Password ChangeAtLogon="True" />
  </Settings>
  <Default>
-  <Domain>RU.lab</Domain>
-  <Path>OU=MyOU,DC=ru,DC=lab</Path>
+  <Domain>corp.invocare.com.au</Domain>
+  <Path>OU=InvoCare,OU=Australia,OU=Generic,DC=corp,DC=invocare,DC=com,DC=au</Path>
   <FirstName></FirstName>
   <LastName></LastName>
   <Office></Office>
   <Title></Title>
   <Description>Full-Time Employee</Description>
   <Department>IT</Department>
-  <Company>Arposh</Company>
-  <Phone>212-555-1000</Phone>
-  <Site>NY</Site>
-  <StreetAddress>100 Main Street</StreetAddress>
-  <City>New York</City>
-  <State>NY</State>
-  <PostalCode>10001</PostalCode>
-  <Password>P@ssw0rd</Password>
+  <Company>Invocare Australia</Company>
+  <Phone>(02) 9111 2345</Phone>
+  <Site>HeadOffice</Site>
+  <StreetAddress>Level 2, 40 Miller Street</StreetAddress>
+  <City>Sydney</City>
+  <State>NSW</State>
+  <PostalCode>2000</PostalCode>
+  <Password>P@ssword1</Password>
  </Default>
  <Locations>
-  <Location Site="NY">
-   <StreetAddress>1 Main Street</StreetAddress>
-   <City>New York</City>
-   <State>NY</State>
-   <PostalCode>10001</PostalCode>
-  </Location>
-  <Location Site="NJ">
-   <StreetAddress>2 Main Street</StreetAddress>
-   <City>Edison</City>
-   <State>NJ</State>
-   <PostalCode>22222</PostalCode>
+  <Location Site="HeadOffice">
+   <StreetAddress>Level 2, 40 Miller Street</StreetAddress>
+   <City>North Sydney</City>
+   <State>NSW</State>
+   <PostalCode>2000</PostalCode>
   </Location>
   <Location Site="Custom">
    <StreetAddress></StreetAddress>
@@ -70,14 +64,12 @@ $CreateXML = @"
   </Location>
  </Locations>
  <Domains>
-  <Domain Name="RU.lab">
-   <Path>OU=MyOU,DC=ru,DC=lab</Path>
-   <Path>CN=Users,DC=ru,DC=lab</Path>
-  </Domain>
-  <Domain Name="RP.lab">
-   <Path>OU=RPUsers1,DC=rp,DC=lab</Path>
-   <Path>OU=RPUsers2,DC=rp,DC=lab</Path>
-   <Path>OU=RPUsers3,DC=rp,DC=lab</Path>
+  <Domain Name="corp.invocare.com.au">
+   <Path>OU=Generic,OU=Australia,OU=InvoCare,DC=corp,DC=invocare,DC=com,DC=au</Path>
+   <Path>OU=NSW,OU=Australia,OU=InvoCare,DC=corp,DC=invocare,DC=com,DC=au</Path>
+   <Path>OU=QLD,OU=Australia,OU=InvoCare,DC=corp,DC=invocare,DC=com,DC=au</Path>
+   <Path>OU=SA,OU=Australia,OU=InvoCare,DC=corp,DC=invocare,DC=com,DC=au</Path>
+   <Path>OU=ACT,OU=Australia,OU=InvoCare,DC=corp,DC=invocare,DC=com,DC=au</Path>
   </Domain>
  </Domains>
  <Descriptions>
@@ -717,7 +709,7 @@ function Call-ANUC_pff {
 	$formMain.Name = "formMain"
 	$formMain.ShowIcon = $False
 	$formMain.StartPosition = 'CenterScreen'
-	$formMain.Text = "Arposh New User Creation"
+	$formMain.Text = "Project Clockwork v0.1.1"
 	$formMain.add_Load($formMain_Load)
 	#
 	# btnSubmitAll

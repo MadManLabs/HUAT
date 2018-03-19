@@ -1,0 +1,11 @@
+﻿Get-ADUser -Filter * -Properties * | Select-Object @{Label = "EmployeeCode";Expression = {$_.Description}},
+@{Label = "LastName";Expression = {$_.Surname}},
+@{Label = "FirstName";Expression = {$_.GivenName}},
+@{Label = "PositionDescription";Expression = {$_.Title}},
+@{Label = "LocationCode";Expression = {$_.POBox}},
+@{Label = "LocationDescription";Expression = {$_.Company}},
+@{Label = "WorkEmail";Expression = {$_.EmailAddress}},
+@{Label = "sAMAccountName";Expression = {$_.sAMAccountName}},
+@{Label = "Mail";Expression = {$_.Mail}},
+@{Label = "AccountStatus";Expression = {if (($_.Enabled -eq 'TRUE')  ) {'Enabled'} Else {'Disabled'}}},
+@{Label = "lastlogondate";Expression = {$_.lastlogondate}} | Export-Csv -Path "C:\AD_scripts\allUsers2.csv" -NoTypeInformation
